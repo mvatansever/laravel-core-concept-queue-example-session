@@ -28,5 +28,15 @@ You must execute only the following command to install all of dependencies:
 
 ```
 composer install
+
+php artisan migrate
 ```
 Then you must set the `QUEUE_DRIVER` environment variable which you want to use.
+
+### Description
+
+To get jobs from the `mail` queue with the following command:
+
+```
+php artisan queue:work --queue=mail --tries=3
+```
