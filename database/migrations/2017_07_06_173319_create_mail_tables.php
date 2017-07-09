@@ -25,7 +25,7 @@ class CreateMailTables extends Migration
 
         Schema::create('mail_receivers', function(Blueprint $table){
             $table->unsignedInteger('mail_id');
-            $table->string('email_address');
+            $table->string('mail_address');
 
             $table->foreign(['mail_id'])
                   ->on('mails')

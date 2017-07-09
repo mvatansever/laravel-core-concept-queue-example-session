@@ -178,10 +178,9 @@ return [
         App\Providers\RouteServiceProvider::class,
 
         /*
-         * Third-party
+         * Third-party Service Providers
          */
         VladimirYuldashev\LaravelQueueRabbitMQ\LaravelQueueRabbitMQServiceProvider::class,
-
     ],
 
     /*

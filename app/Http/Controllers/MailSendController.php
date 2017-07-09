@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreMailSendRequest;
 use App\Jobs\SendMailToReceivers;
 use App\Mail;
-use Illuminate\Http\Request;
 
 class MailSendController extends Controller
 {
@@ -17,6 +16,21 @@ class MailSendController extends Controller
     public function index()
     {
         return Mail::all()->load('mailReceivers');
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        return [
+            'title' => null,
+            'content' => null,
+            'sender_email_address' => null,
+            'receiver_email_addresses' => []
+        ];
     }
 
     /**
@@ -40,9 +54,9 @@ class MailSendController extends Controller
 
             $mail->save();
 
-            collect($request->get('email_receivers'))->each(function($receiver) use($mail){
+            collect($request->get('receiver_email_addresses'))->each(function($receiver) use($mail){
                 $mail->mailReceivers()->create([
-                    'email_address' => $receiver
+                    'mail_address' => $receiver
                 ]);
             });
 
@@ -50,9 +64,9 @@ class MailSendController extends Controller
         }catch (\Exception $e){
             \DB::connection()->rollback();
 
-            throw new \RuntimeException("Something went wrong while storing the mail send record", 0, $e);
+            throw new \RuntimeException("Something went wrong while storing mail record.", 0, $e);
         }
-        
+
         dispatch((new SendMailToReceivers($mail))->onQueue('mail'));
 
         return [

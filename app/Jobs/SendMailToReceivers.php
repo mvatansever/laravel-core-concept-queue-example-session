@@ -13,12 +13,14 @@ class SendMailToReceivers implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
-    public $mail;
+    /**
+     * @var Mail
+     */
+    private $mail;
 
     /**
-     * Create a new job instance.
-     *
-     * @return void
+     * SendMailToReceivers constructor.
+     * @param Mail $mail
      */
     public function __construct(Mail $mail)
     {
@@ -32,6 +34,6 @@ class SendMailToReceivers implements ShouldQueue
      */
     public function handle()
     {
-        var_dump($this->mail->mailReceivers->toArray());
+        var_dump($this->mail->mailReceivers->toArray(), "Queue job executed");
     }
 }

@@ -17,8 +17,8 @@ class StoreMailSendRequest extends FormRequest
             'title' => 'string',
             'content' => 'string',
             'sender_email_address' => 'required|email',
-            'email_receivers' => 'required|array',
-            'email_receivers.*' => 'email',
+            'receiver_email_addresses' => 'required|array',
+            'receiver_email_addresses.*' => 'email',
         ];
     }
 

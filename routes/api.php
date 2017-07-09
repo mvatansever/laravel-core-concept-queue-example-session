@@ -13,7 +13,7 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::resource('sendmail', 'MailSendController', [
+Route::resource('mailsend', 'MailSendController', [
     'except' => [
         'destroy',
         'update',

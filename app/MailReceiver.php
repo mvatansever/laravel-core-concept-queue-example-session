@@ -8,8 +8,23 @@ class MailReceiver extends Model
 {
     protected $fillable = [
         'mail_id',
-        'email_address',
+        'mail_address',
     ];
 
     public $timestamps = false;
+
+    public function getId()
+    {
+        return $this->getKey();
+    }
+
+    public function getMailAddress()
+    {
+        return $this->getAttributeValue('mail_address');
+    }
+
+    public function mail()
+    {
+        return $this->belongsTo(Mail::class);
+    }
 }
