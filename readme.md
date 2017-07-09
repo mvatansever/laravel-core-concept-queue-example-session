@@ -40,3 +40,9 @@ To get jobs from the `mail` queue with the following command:
 ```
 php artisan queue:work --queue=mail --tries=3
 ```
+
+If you want to process with another driver different from the default driver you should do it following command:
+
+```
+php artisan queue:work rabbitmq --queue=mail --tries=3
+```
