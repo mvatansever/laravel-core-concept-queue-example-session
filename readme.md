@@ -4,3 +4,29 @@ This repository consist session files of the Laravel Core Concept and Ecosystem,
 
 ## PDF
 Laravel.pdf file is the session slide file. This file origin exists at [Speaker Deck](https://speakerdeck.com/mvatansever/laravel-core-concept-and-ecosystem).
+
+
+### Requirements
+  - PHP
+    - PHP >= 5.6.4
+    - Curl PHP Extension
+    - PDO PHP Extension
+    - BCMath PHP Extension
+    - Mbstring PHP Extension
+    - Mcrypte PHP Extension
+    - Tokenizer PHP Extension
+    - JSON PHP Extension
+  - Database (MySQL)
+    - MySQL PHP Native Driver (mysqlnd)
+  - RabbitMQ / Redis
+  - Composer
+    - Laravel
+
+
+### Installation
+You must execute only the following command to install all of dependencies:
+
+```
+composer install
+```
+Then you must set the `QUEUE_DRIVER` environment variable which you want to use.
